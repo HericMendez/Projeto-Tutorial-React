@@ -2,28 +2,43 @@ import React, { Component } from "react";
 import './form.css'
 
 class RegisterForm extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.title="";
+    this.text="";
   }
-  handleTitleChange(event){
-    console.log(this.title)
+  _handleTitleChange(event){
     this.title = event.target.value;
+    console.log(this.title)
   }
+
+  _handleTextChange(event){
+    this.text = event.target.value;
+  }
+
+  _createCard(event){
+    event.preventDefault();
+    event.stopPropagation();
+    this.props.createCard(this.title, this.text);
+    console.log(`New note added! \n${this.title} \n${this.text}`)
+    
+  }
+
   render() {
     return (
-      <form className='form-register'>
-        
+      <form className='form-register' onSubmit={this._createCard.bind(this)}>
+        <h1>My Notes</h1>
         <input
          type="text" 
          placeholder="Title"
          className='form-register_input'
-         onChange={this.handleTitleChange.bind(this)}
+         onChange={this._handleTitleChange.bind(this)}
           />
         <textarea 
         rows={15}
         placeholder="What are your thoughts?"
         className='form-register_input'
+        onChange={this._handleTextChange.bind(this)}
          />
         <button className='form-register_input form-register_submit'>
           Enter
