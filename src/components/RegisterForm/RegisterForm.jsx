@@ -9,7 +9,7 @@ class RegisterForm extends Component {
   }
   _handleTitleChange(event){
     this.title = event.target.value;
-    console.log(this.title)
+    //console.log(this.title)
   }
 
   _handleTextChange(event){
@@ -23,6 +23,7 @@ class RegisterForm extends Component {
     console.log(`New note added! \n${this.title} \n${this.text}`)
     
   }
+
 
   render() {
     return (

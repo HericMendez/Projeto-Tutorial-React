@@ -8,7 +8,10 @@
     flex-wrap: wrap;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
     padding: 15px;
-    margin: 10px;
+    max-width: 60vw;
+    
+
+
 }
 
 .card-note_header{
@@ -21,6 +24,8 @@
 card-note_content{
     margin-top: 8px;
     font-size: 1em;   
+
+
 }
 
 .card-note_title{

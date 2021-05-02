@@ -6,6 +6,9 @@
     display: flex;
     flex-direction: column;
     padding: 12px 40px;
+    min-width: 35vw;
+
+
     
 }
 
@@ -16,6 +19,7 @@
     background-color: var(--bg-details);
     font-family:(Arial, Helvetica, sans-serif);
     font-weight: 100;
+
 }
 
 .form-register_submit{

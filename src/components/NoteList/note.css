@@ -1,16 +1,23 @@
 .note-list{
     background-color: var(--bg);
     flex-grow: 3;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    display: list-item;
+    /*grid-template-columns: auto auto auto auto auto;*/
     list-style-type: none;
-    padding-left: 24px;
-    padding-top: 24px;
+    padding-left: 12px;
+    padding-top: 12px;
+
 }
 
 .note-list_item {
     margin: 12px;
-    max-width: 240px;
-    max-height: 400px;
-    display: inline;
+    max-width: fit-content;
+    max-height: auto;
+    display:inline;
+    text-align: justify;
+    word-break: break-all;
+    
+
+
 }
+

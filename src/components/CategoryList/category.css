@@ -1,0 +1,28 @@
+
+.category-list{
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+}
+.category-list_list{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+.category-list_item{
+    background-color: var(--secondary);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+.category-list_input{
+    margin-right: 20px;
+    margin-top: 15px;
+    height: 20px;
+    border-radius: 5px;
+}
