@@ -15,7 +15,8 @@ class CategoryList extends Component {
       <section className='category-list'>
         <ul className='category-list_list'>
             {this.props.categories.map((category, index)=>{
-               return <li key={index} className='category-list_item'>{category}</li>
+            
+               if(category!='') return <li key={index} className='category-list_item'>{category}</li>
             })}
           
 

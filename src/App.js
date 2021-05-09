@@ -4,52 +4,36 @@ import RegisterForm from './components/RegisterForm/RegisterForm';
 import CategoryList from './components/CategoryList/CategoryList'
 import "./assets/app.css";
 import "./assets/index.css";
+import noteArray from './data/Notes'
+import Categories from './data/Categories';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      notes: [],
-      categories: []
-    };
+    this.categories = new Categories();
+    this.notes = new noteArray();
   }
+ 
 
-  createCard(title, text) {
-    const newCard = { title, text };
-    const NewArrayOfCards = [...this.state.notes, newCard];
-    const newState = {
-      notes: NewArrayOfCards,
-    };
-    this.setState(newState);
-  }
-
-  addCategory(catName){
-    const NewArrayOfCats = [...this.state.categories, catName]
-    const newState =  {...this.state, categories:NewArrayOfCats}
-    this.setState(newState)
-  }
-
-  deleteCard(index) {
-    let arrayOfCards = this.state.notes;
-    arrayOfCards.splice(index, 1);
-    this.setState({ notes: arrayOfCards });
-
-    console.log("delete");
-  }
 
   render() {
     return (
       <section className="content">
-        <RegisterForm createCard={this.createCard.bind(this)} />
+        <RegisterForm 
+        categories={this.categories.categories} 
+        createCard={this.notes.createCard} 
+        />
+
         <main className='main-content'>
           <CategoryList 
-          addCategory={this.addCategory.bind(this)}
-          categories={this.state.categories} 
+          addCategory={this.categories.addCategory}
+          categories={this.categories.categories} 
           />
+          
           <NoteList
-            deleteCard={this.deleteCard.bind(this)}
+            deleteCard={this.notes.deleteCard}
             notes={
-              this.state.notes    
+              this.notes.notes
             } 
           />
         </main>
