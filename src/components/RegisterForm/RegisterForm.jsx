@@ -4,12 +4,19 @@ import './form.css'
 class RegisterForm extends Component {
   constructor(props){
     super(props);
-    this.title="";
+    this.title="No Title";
     this.text="";
+    this.category="No Category"
   }
   _handleTitleChange(event){
     this.title = event.target.value;
-    //console.log(this.title)
+    console.log(this.title);
+    if(this.title=='') {this.title='No Title'}
+  }
+
+  _handleCategoryChange(event){
+      event.stopPropagation();
+      this.category = event.target.value;
   }
 
   _handleTextChange(event){
@@ -19,16 +26,24 @@ class RegisterForm extends Component {
   _createCard(event){
     event.preventDefault();
     event.stopPropagation();
-    this.props.createCard(this.title, this.text);
-    console.log(`New note added! \n${this.title} \n${this.text}`)
+    this.props.createCard(this.title, this.text, this.category);
+    //console.log(`New note added! \n${this.title} \n${this.text}`)
     
   }
 
 
   render() {
     return (
+      
       <form className='form-register' onSubmit={this._createCard.bind(this)}>
-        <h1>My Notes</h1>
+        <h2>My Notes</h2>
+        <select onChange={this._handleCategoryChange.bind(this)} className='form-register_input'>
+          <option>No Category</option>
+            {this.props.categories.map(category=>{
+              return <option>{category}</option>
+            })}
+        </select>
+        
         <input
          type="text" 
          placeholder="Title"

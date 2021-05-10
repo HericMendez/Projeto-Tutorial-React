@@ -11,7 +11,9 @@ class CardNote extends Component {
     return (
       <section className='card-note'>
         <header className='card-note_header'>
-          <h3 className='card-note_title'>{this.props.title}</h3>
+          <h3 className='card-note_title'>{this.props.title}&nbsp;&nbsp;</h3>
+          
+          <h6>{this.props.category}&nbsp;&nbsp;</h6>
           <DeleteSVG onClick={this.erase.bind(this)}/>
         </header>
         <p className='card-note_content'>{this.props.text}</p>
