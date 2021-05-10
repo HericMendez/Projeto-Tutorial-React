@@ -20,14 +20,17 @@ class App extends Component {
     return (
       <section className="content">
         <RegisterForm 
-        categories={this.categories.categories} 
-        createCard={this.notes.createCard} 
+        categories={this.categories.cats} 
+         /*this.categories(objeto da classe Categories)
+          .cats(atributo da classe Categories))*/
+        createCard={this.notes.createCard} //erro
         />
 
         <main className='main-content'>
           <CategoryList 
-          addCategory={this.categories.addCategory}
-          categories={this.categories.categories} 
+          addCategory={this.categories.addCategory.bind(this.categories)}
+          categories={this.categories} 
+         
           />
           
           <NoteList
@@ -35,7 +38,7 @@ class App extends Component {
             notes={
               this.notes.notes
             } 
-          />
+           />
         </main>
       </section>
     );

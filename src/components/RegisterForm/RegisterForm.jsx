@@ -10,7 +10,6 @@ class RegisterForm extends Component {
   }
   _handleTitleChange(event){
     this.title = event.target.value;
-    console.log(this.title);
     if(this.title=='') {this.title='No Title'}
   }
 
@@ -27,7 +26,7 @@ class RegisterForm extends Component {
     event.preventDefault();
     event.stopPropagation();
     this.props.createCard(this.title, this.text, this.category);
-    //console.log(`New note added! \n${this.title} \n${this.text}`)
+    console.log(`New note added! \n${this.title} \n${this.category} \n${this.text}`)
     
   }
 

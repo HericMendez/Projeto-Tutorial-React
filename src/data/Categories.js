@@ -1,11 +1,20 @@
 export default class Categories {
     constructor(){
-        this.categories=[];
+        this.cats=[];
+        this._subs = [];
     }
 
-    addCategory(newCat){
-        console.log(this.categories)
+    subscribe(func){
+        this._subs.push(func)
+    }
 
-        this.categories.push(newCat)
+    notify(){
+        this._subs.forEach(func =>{func(this.cats)});
+    }
+    
+    addCategory(newCat){
+        this.cats.push(newCat)
+        this.notify();
+        console.log(this.cats)
     }
 }
