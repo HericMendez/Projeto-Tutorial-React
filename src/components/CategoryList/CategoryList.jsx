@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import "./category.css";
 
 class CategoryList extends Component {
-
+  constructor(){
+    super();
+    this.state={categories:[]}
+  }
+  
   componentDidMount(){
     this.props.categories.subscribe(this._newCategories.bind(this));
   }
 
   _newCategories(categories){
-    console.log(categories)
+    this.setState({...this.state, categories})
   }
 
 
@@ -22,7 +26,7 @@ class CategoryList extends Component {
     return (
       <section className='category-list'>
         <ul className='category-list_list'>
-            {this.props.categories.cats.map((category, index)=>{
+            {this.state.categories.map((category, index)=>{
             
                if(category!=''){
                  return <li 

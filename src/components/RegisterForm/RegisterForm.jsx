@@ -7,9 +7,20 @@ class RegisterForm extends Component {
     this.title="No Title";
     this.text="";
     this.category="No Category"
+    this.state={categories:[]}
   }
+
+  componentDidMount(){
+    this.props.categories.subscribe(this._newCategories.bind(this));
+  }
+
+  _newCategories(categories){
+    this.setState({...this.state, categories})
+  }
+
   _handleTitleChange(event){
     this.title = event.target.value;
+    console.log(this.title);
     if(this.title=='') {this.title='No Title'}
   }
 
@@ -26,7 +37,7 @@ class RegisterForm extends Component {
     event.preventDefault();
     event.stopPropagation();
     this.props.createCard(this.title, this.text, this.category);
-    console.log(`New note added! \n${this.title} \n${this.category} \n${this.text}`)
+    //console.log(`New note added! \n${this.title} \n${this.text}`)
     
   }
 
@@ -38,8 +49,8 @@ class RegisterForm extends Component {
         <h2>My Notes</h2>
         <select onChange={this._handleCategoryChange.bind(this)} className='form-register_input'>
           <option>No Category</option>
-            {this.props.categories.map(category=>{
-              return <option>{category}</option>
+            {this.state.categories.map((category, index) =>{
+              return <option key={index}>{category}</option>
             })}
         </select>
         

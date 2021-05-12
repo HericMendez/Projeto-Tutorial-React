@@ -20,10 +20,10 @@ class App extends Component {
     return (
       <section className="content">
         <RegisterForm 
-        categories={this.categories.cats} 
+        categories={this.categories} 
          /*this.categories(objeto da classe Categories)
           .cats(atributo da classe Categories))*/
-        createCard={this.notes.createCard} //erro
+        createCard={this.notes.addCard.bind(this.notes)} //erro
         />
 
         <main className='main-content'>
@@ -34,10 +34,8 @@ class App extends Component {
           />
           
           <NoteList
-            deleteCard={this.notes.deleteCard}
-            notes={
-              this.notes.notes
-            } 
+            deleteCard={this.notes.deleteCard.bind(this.notes)}
+            notes={this.notes} 
            />
         </main>
       </section>

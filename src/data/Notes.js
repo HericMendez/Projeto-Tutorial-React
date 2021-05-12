@@ -7,10 +7,12 @@ export default class noteArray{
     addCard(title, text, category){
         const newNote =  new Note(title, text, category);
         this.notes.push(newNote);
+        this.notify();
     }
 
     deleteCard(index){
         this.notes.splice(index, 1);
+        this.notify();
     }
 
     subscribe(func){
@@ -18,7 +20,7 @@ export default class noteArray{
     }
 
     notify(){
-        this._subs.forEach(func =>{func(this.cats)});
+        this._subs.forEach(func =>{func(this.notes)});
     }
 }
 

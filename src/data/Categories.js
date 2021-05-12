@@ -15,6 +15,6 @@ export default class Categories {
     addCategory(newCat){
         this.cats.push(newCat)
         this.notify();
-        console.log(this.cats)
+       // console.log(this.cats)
     }
 }
